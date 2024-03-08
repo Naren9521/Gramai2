@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translator</title>
+    <link rel="stylesheet" href="../Static/css/GramAi.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+</head>
+
+<body>
+  <nav class = "navbar">
+    <div class="container main-nav flex">
+        <div class="logo-details">
+            <i class="fab fa-slack" id ="logoimg"></i>
+            <span class="logo_name">Gramai</span>
+          </div>
+        <div class="nav-links" id="nav-links"> 
+            <ul class="flex">
+                <li><a href="GramAi.html" class="hover-link">Home</a></li>
+                
+                <li><a href="#features-section" class="hover-link">Features</a></li>
+                <li><a href="about_us.html" class="hover-link"> About us</a></li>
+                <li><a href="contactus.html" class="hover-link">Contact us</a></li>
+                <li><a href="signin.html" class="hover-link secondary-button">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav> 
+    
+
+    <!-- header section -->
+    <header>
+        <div class="container header-section flex">
+            <div class="header-left">
+                <h1>Text summarization </h1>
+                <p>Our Text Summarization Tool helps you extract key information from lengthy texts, saving you time and effort.</p>
+                <p> 
+                     Whether you're a student needing to understand complex topics or a professional managing large volumes of content, our tool ensures you grasp the main points efficiently. Stay organized, informed, and efficient with our Text Summarization Tool.</p>
+                        </div>
+            <div class="header-right">
+                <img src="../Static/Images/text_summarization_page.png" alt="hero image">
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="grammar-checker">
+            <textarea id="inputText" placeholder="Enter your text here"></textarea>
+            <button id="translateButton" class="hover-link secondary-button2">Summarize it...</button>
+            <textarea id="outputText2" placeholder="Summarized text will appear here" ></textarea>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="subfooter">
+        <footer>
+            <div class="content">
+              <div class="top">
+                <div class="logo-details">
+                  <i class="fab fa-slack"></i>
+                  <span class="logo_name">Gramai</span>
+                </div>
+                <div class="media-icons">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+              </div>
+              <div class="link-boxes">
+                <ul class="box">
+                  <li class="link_name">Company</li>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Contact us</a></li>
+                  <li><a href="#">About us</a></li>
+                </ul>
+                <ul class="box">
+                  <li class="link_name">Features</li>
+                  <li><a href="#">Similarity Checker</a></li>
+                  <li><a href="#">Grammar Checker</a></li>
+                  <li><a href="#">Translator</a></li>
+                  <li><a href="#">Spell Bee</a></li>
+                </ul>
+                <ul class="box">
+                  <li class="link_name">Account</li>
+                  <li><a href="#">Profile</a></li>
+                  <li><a href="#">My account</a></li>
+                  <li><a href="#">Purchase</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="bottom-details">
+              <div class="bottom_text">
+                <span class="copyright_text">Copyright © 2021 <a href="#">Gramai.</a>All rights reserved</span>
+                <span class="policy_terms">
+                  <a href="#">Privacy policy</a>
+                  <a href="#">Terms & condition</a>
+                </span>
+              </div>
+            </div>
+          </footer>
+        </div>
+
+
+    <script src="../Static/javascript/summarization.js"></script>
+</body>
+
+</html>

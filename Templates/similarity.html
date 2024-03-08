@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Similarity Checker</title>
+    <link rel="stylesheet" href="../Static/css/GramAi.css">
+    <script src = "../Static/javascript/GramAi.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+</head>
+<body>
+
+    <!-- nav bar -->
+    <nav class = "navbar">
+        <div class="container main-nav flex">
+            <div class="logo-details">
+                <i class="fab fa-slack" id ="logoimg"></i>
+                <span class="logo_name">Gramai</span>
+              </div>
+            <div class="nav-links" id="nav-links"> 
+                <ul class="flex">
+                    <li><a href="GramAi.html" class="hover-link">Home</a></li>
+                    
+                    <li><a href="#features-section" class="hover-link">Features</a></li>
+                    <li><a href="about_us.html" class="hover-link"> About us</a></li>
+                    <li><a href="contactus.html" class="hover-link">Contact us</a></li>
+                    <li><a href="signin.html" class="hover-link secondary-button">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav> 
+        <!-- header section -->
+        <header>
+            <div class="container header-section flex">
+                <div class="header-left">
+                    <h1>Similarity checker </h1>
+                    <p>Our similarity checker  helps you to check similarity between text files </p>
+                <p> Our tool compares texts to detect similarities, ensuring originality and preventing plagiarism. Receive detailed reports highlighting any matched content and improve your writing with our comprehensive analysis. Enhance your work's authenticity and credibility by using our powerful similarity checker!</p>                            </div>
+                <div class="header-right">
+                    <img src="../Static/Images/similarity_checker.png" alt="hero image">
+                </div>
+            </div>
+        </header>
+
+    <!-- main content -->
+    <div class="container">
+        <h2>Similarity Checker</h2>
+        <br>
+        <h3>GramAi’s Similarity checker detects plagiarism/similarity in the given text files and returns a detail report.</h3>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" name="files[]" id="files" multiple>
+            <input type="button" value="Get report" class="secondary-button2" onclick="uploadFiles()">
+        </form>
+        <div id="output" ></div>
+        <div id="output2"></div>
+        <div id="output3"></div>
+    </div>
+    <div class="subfooter">
+        <footer>
+            <div class="content">
+              <div class="top">
+                <div class="logo-details">
+                  <i class="fab fa-slack"></i>
+                  <span class="logo_name">Gramai</span>
+                </div>
+                <div class="media-icons">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+              </div>
+              <div class="link-boxes">
+                <ul class="box">
+                  <li class="link_name">Company</li>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Contact us</a></li>
+                  <li><a href="#">About us</a></li>
+                </ul>
+                <ul class="box">
+                  <li class="link_name">Features</li>
+                  <li><a href="#">Similarity Checker</a></li>
+                  <li><a href="#">Grammar Checker</a></li>
+                  <li><a href="#">Translator</a></li>
+                  <li><a href="#">Spell Bee</a></li>
+                </ul>
+                <ul class="box">
+                  <li class="link_name">Account</li>
+                  <li><a href="#">Profile</a></li>
+                  <li><a href="#">My account</a></li>
+                  <li><a href="#">Purchase</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="bottom-details">
+              <div class="bottom_text">
+                <span class="copyright_text">Copyright © 2021 <a href="#">Gramai.</a>All rights reserved</span>
+                <span class="policy_terms">
+                  <a href="#">Privacy policy</a>
+                  <a href="#">Terms & condition</a>
+                </span>
+              </div>
+            </div>
+          </footer>
+        </div>
+    <script>
+        function uploadFiles() {
+            var files = document.getElementById('files').files;
+            var formData = new FormData();
+
+            var fileContents = [];  // Array to store file contents
+            var fileNames = [];     // Array to store file names
+
+            for (var i = 0; i < files.length; i++) {
+                formData.append('files[]', files[i]);
+                fileNames.push(files[i].name);  // Add file name to array
+            }
+
+            // Process files
+            var output = document.getElementById('output');
+            output.innerHTML = '';
+            var output2 = document.getElementById('output2');
+            output2.innerHTML = '';
+            var output3 = document.getElementById('output3');
+            output3.innerHTML = '';
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    const content = e.target.result;
+                    fileContents.push(content);  // Add file content to array
+
+                    if (fileContents.length === files.length) {
+                        // All files processed, send data to backend
+                        fetch('http://127.0.0.1:8000/similar_text_class', {
+                            method: 'POST',
+                            body: JSON.stringify({ fileContents: fileContents, fileNames: fileNames }),
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            // Display similarity report
+                            const reportDiv = document.createElement('div');
+                            reportDiv.textContent = `
+                                Name1 :${data.most_similar_name_one}
+                                Text1: ${data.most_similar_text_one}
+                                
+                            `;
+                            output.appendChild(reportDiv);
+
+                            const reportDiv2 = document.createElement('div');
+                            reportDiv2.textContent = `
+                                Name2 :${data.most_similar_name_two}
+                                Text2: ${data.most_similar_text_two}
+                                
+                            `;
+                            output2.appendChild(reportDiv2);
+
+                            const reportDiv3 = document.createElement('div');
+                            reportDiv3.textContent = `
+                                Overall similarity: ${data.overall_similarity}
+                            `;
+                            output3.appendChild(reportDiv3);
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('There was an error processing your request. Please try again later.');
+                        });
+                    }
+                };
+
+                reader.readAsText(file);
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+.job{
+    font-size: 40px;
+    color: black;
+    display: flex;
+}
+.typing-text{
+color: aqua;
+margin-left:10px;
+white-space:nowrap;
+overflow: hidden;
+border-right: 4px solid aqua;
+animation: typing 5s steps(15) infinite;
+}
+@keyframes typing{
+    0%{
+        width:0ch;
+    }
+    50%{
+        width:15ch;
+    }
+    100%{
+        width:0ch;
+    }
+}
+.main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(238, 235, 222);
+}
+
+.container {
+    width: 60rem;
+    box-shadow: 0px 0px 5px grey;
+    display: flex;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 10px;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.col {
+    text-align: justify;
+    padding: 15px;
+    width: 95%;
+}
+
+#submit {
+    width: 100%;
+    background-color: rgb(47, 8, 73);
+    transition: 0.5s;
+    color: white;
+    outline: none;
+    border: none;
+    font-size: 25px;
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#submit:hover {
+    background-color: rgb(34, 6, 53);
+}
+
+.box {
+    box-shadow: 0px -1px 1px grey;
+    width: 100%;
+}
+header{
+    background-color:rgb(238, 235, 222);
+    padding: 8px;
+
+}
+/* .timer{
+    color: #004085;
+    background:#f2f2f2;
+    border: 2px solid #0e7cf2;
+    height: 45px;
+    padding: 0 8px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 145px;
+}
+
+.timer .time_left_txt{
+    font-weight: 400;
+    font-size: 17px;
+    user-select: none;
+}
+
+.timer .timer_sec{
+    font-size: 18px;
+    font-weight: 500;
+    height: 30px;
+    width: 45px;
+    color: #fff;
+    border-radius: 5px;
+    line-height: 30px;
+    text-align: center;
+    background: #343a40;
+    border: 1px solid #343a40;
+    user-select: none;
+} */
+
+.timer  {
+    font-size: 20px;
+    font-weight: bold;
+    /* color:blue; */
+
+  }
+.left{
+    color:blue;
+    border: 1.5px solid blue;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin: 2px;
+}
+.count{
+    color:red;
+    border: 1.5px solid red;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin: 2px;
+}
+#seconds{
+    color:red;
+    border: 1.5px solid red;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin: 2px;
+
+}
+  
